@@ -68,6 +68,9 @@
     <Compile Include="Assets\Scripts\AsteroidGenerator.cs" />
     <Compile Include="Assets\Scripts\BuildingGen.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\MiniMapFollow.cs" />
+    <Compile Include="Assets\Scripts\MinimapGlowBuildings.cs" />
+    <Compile Include="Assets\Scripts\MinimapGlowManager.cs" />
     <Compile Include="Assets\Scripts\ShipController.cs" />
     <Compile Include="Assets\com\heparo\terrain\toolkit\scripts\TerrainToolkit.cs" />
     <Reference Include="UnityEngine">
