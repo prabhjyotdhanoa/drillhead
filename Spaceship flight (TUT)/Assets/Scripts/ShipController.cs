@@ -16,7 +16,7 @@ public class ShipController : MonoBehaviour
 
     public float dashSpeed = 50f;
     public float dashDuration = 1f;
-    public float dashCooldown = 3f;
+    public float dashCooldown = 5f;
     public float spinSpeed = 720f; // Degrees per second
     private bool isDashing = false;
     private float dashTimeRemaining = 0f;
@@ -80,6 +80,7 @@ public class ShipController : MonoBehaviour
 
         HandleMovement();
         HandleDashInput();
+        HandleDashCooldownReduction();
     }
 
     void OnTriggerEnter(Collider other)
@@ -121,6 +122,17 @@ public class ShipController : MonoBehaviour
         col.color = originalGradient; // Restore the original color
 
     }
+
+    private void HandleDashCooldownReduction() 
+    { 
+        //spining the plane reduces ur dash cooldown
+        //todo - add a UI bar to show recharge
+        if (dashCooldownRemaining >= 0 && Mathf.Abs(rollInput) > 0.05)
+        {
+            dashCooldownRemaining -= (Time.deltaTime);
+        
+        }
+    }
     private void HandleMovement()
     {
         lookInput.x = Input.mousePosition.x;
@@ -161,7 +173,7 @@ public class ShipController : MonoBehaviour
         speedLines.transform.Rotate(0, 0, spinSpeed * Time.deltaTime, Space.Self);
 
         //keep camera in rotation that it had prior to dashing
-        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 75f, Time.deltaTime * 10f);
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 85f, Time.deltaTime * 10f);
         // Move forward quickly
         transform.position += transform.forward * dashSpeed * Time.deltaTime;
         transform.position += (transform.right * (activeStrafeSpeed*dashSpeed/3) * Time.deltaTime) + (transform.up * (activeHoverSpeed*dashSpeed/3) * Time.deltaTime);

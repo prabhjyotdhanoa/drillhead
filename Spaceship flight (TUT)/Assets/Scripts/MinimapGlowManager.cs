@@ -12,7 +12,7 @@ public class MinimapGlowManager : MonoBehaviour
     void Start()
     {
         // Create a proxy object for the minimap
-        proxy = GameObject.CreatePrimitive(PrimitiveType.Sphere); // Create a sphere
+        proxy = GameObject.CreatePrimitive(PrimitiveType.Sphere); // Create a sphere;
         proxy.transform.position = transform.position;
         proxy.transform.rotation = transform.rotation;
         proxy.layer = LayerMask.NameToLayer("MiniMap Glow");
